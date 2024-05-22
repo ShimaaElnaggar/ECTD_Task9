@@ -54,6 +54,14 @@ class SignUpView extends StatelessWidget {
                 ) ,
               )
           ),
+          CustomTextFormField(
+            obscureText: true,
+            maxLength: 10,
+            textInputAction: TextInputAction.done,
+            keyboardType: TextInputType.text,
+            label: const Text("Confirm Password"),
+            controller: confirmPasswordController,
+          ),
         ],
       ),
     );
