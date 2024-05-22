@@ -1,3 +1,4 @@
+import 'package:ectd_task9/views/home_view.dart';
 import 'package:ectd_task9/widgets/custom_text_form_field.dart';
 import 'package:flutter/material.dart';
 
@@ -51,7 +52,7 @@ class SignUpView extends StatelessWidget {
                 controller: passwordController,
                 suffixIcon: IconButton(
                   onPressed: () {},
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.visibility_off,
                   ),
                 )),
@@ -62,6 +63,37 @@ class SignUpView extends StatelessWidget {
               keyboardType: TextInputType.text,
               label: const Text("Confirm Password"),
               controller: confirmPasswordController,
+            ),
+            Padding(
+              padding: const EdgeInsets.only(right: 16 ,bottom: 16),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  OutlinedButton(
+                    onPressed: (){
+                      if(formKey.currentState!.validate()){
+                        Navigator.pushAndRemoveUntil(
+                            context,
+                            MaterialPageRoute(builder: (context) => const HomeView() ),
+                                (route) => false);
+                      }
+                    },
+                    style: OutlinedButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(5),
+                      ),
+
+                    ),
+                    child: const Text(
+                      "Sign Up",
+                      style: TextStyle(
+                        fontSize: 26,
+                        color: Colors.blue,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ],
         ),
