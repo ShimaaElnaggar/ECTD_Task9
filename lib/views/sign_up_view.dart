@@ -30,6 +30,14 @@ class SignUpView extends StatelessWidget {
             label: const Text("Email"),
             controller: emailController,
           ),
+          CustomTextFormField(
+            obscureText: false,
+            maxLength: 10,
+            textInputAction: TextInputAction.next,
+            keyboardType: TextInputType.name,
+            label: const Text("Username"),
+            controller: userNameController,
+          ),
         ],
       ),
     );
