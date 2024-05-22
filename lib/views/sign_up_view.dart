@@ -1,5 +1,6 @@
 
 
+import 'package:ectd_task9/widgets/custom_text_form_field.dart';
 import 'package:flutter/material.dart';
 
 class SignUpView extends StatelessWidget {
@@ -21,7 +22,14 @@ class SignUpView extends StatelessWidget {
       backgroundColor: Colors.deepOrange,
       body: ListView(
         children: [
-
+          CustomTextFormField(
+            obscureText: false,
+            maxLength: 25,
+            textInputAction: TextInputAction.next,
+            keyboardType: TextInputType.emailAddress,
+            label: const Text("Email"),
+            controller: emailController,
+          ),
         ],
       ),
     );
