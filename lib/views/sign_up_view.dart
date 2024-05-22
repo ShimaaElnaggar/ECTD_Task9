@@ -27,7 +27,7 @@ class _SignUpViewState extends State<SignUpView> {
     return Scaffold(
       backgroundColor: Colors.deepOrange,
       body: Container(
-        margin: const EdgeInsets.symmetric(vertical: 50,horizontal: 30),
+        margin: const EdgeInsets.symmetric(vertical: 55,horizontal: 30),
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(5),
@@ -35,29 +35,27 @@ class _SignUpViewState extends State<SignUpView> {
         child: Form(
           key: formKey,
           child: ListView(
+            shrinkWrap: true,
             children: [
               CustomTextFormField(
                 obscureText: false,
-                maxLength: 25,
                 textInputAction: TextInputAction.next,
                 keyboardType: TextInputType.emailAddress,
-                label: const Text("Email"),
+                label: "Email",
                 controller: emailController,
               ),
               CustomTextFormField(
                 obscureText: false,
-                maxLength: 10,
                 textInputAction: TextInputAction.next,
                 keyboardType: TextInputType.name,
-                label: const Text("Username"),
+                label: "Username",
                 controller: userNameController,
               ),
               CustomTextFormField(
                   obscureText: obscurePassword,
-                  maxLength: 10,
                   textInputAction: TextInputAction.next,
                   keyboardType: TextInputType.text,
-                  label: const Text("Password"),
+                  label: "Password",
                   controller: passwordController,
                   suffixIcon: IconButton(
                     onPressed: () {
@@ -74,11 +72,10 @@ class _SignUpViewState extends State<SignUpView> {
                   )
               ),
               CustomTextFormField(
-                obscureText: true,
-                maxLength: 10,
+                obscureText:obscurePassword,
                 textInputAction: TextInputAction.done,
                 keyboardType: TextInputType.text,
-                label: const Text("Confirm Password"),
+                label: "Confirm Password",
                 controller: confirmPasswordController,
                   suffixIcon: IconButton(
                     onPressed: () {
@@ -118,7 +115,7 @@ class _SignUpViewState extends State<SignUpView> {
                       child: const Text(
                         "Sign Up",
                         style: TextStyle(
-                          fontSize: 26,
+                          fontSize: 22,
                           color: Colors.blue,
                         ),
                       ),
