@@ -38,6 +38,22 @@ class SignUpView extends StatelessWidget {
             label: const Text("Username"),
             controller: userNameController,
           ),
+          CustomTextFormField(
+              obscureText: true,
+              maxLength: 10,
+              textInputAction: TextInputAction.next,
+              keyboardType: TextInputType.text,
+              label: const Text("Password"),
+              controller: passwordController,
+              suffixIcon: IconButton(
+                onPressed: () {
+
+                },
+                icon:Icon(
+                  Icons.visibility_off,
+                ) ,
+              )
+          ),
         ],
       ),
     );
