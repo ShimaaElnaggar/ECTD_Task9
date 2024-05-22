@@ -20,82 +20,85 @@ class SignUpView extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.deepOrange,
       body: Container(
-        margin: const EdgeInsets.symmetric(vertical: 60,horizontal: 30),
+        margin: const EdgeInsets.symmetric(vertical: 50,horizontal: 30),
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(5),
         ),
-        child: ListView(
-          children: [
-            CustomTextFormField(
-              obscureText: false,
-              maxLength: 25,
-              textInputAction: TextInputAction.next,
-              keyboardType: TextInputType.emailAddress,
-              label: const Text("Email"),
-              controller: emailController,
-            ),
-            CustomTextFormField(
-              obscureText: false,
-              maxLength: 10,
-              textInputAction: TextInputAction.next,
-              keyboardType: TextInputType.name,
-              label: const Text("Username"),
-              controller: userNameController,
-            ),
-            CustomTextFormField(
-                obscureText: true,
+        child: Form(
+          key: formKey,
+          child: ListView(
+            children: [
+              CustomTextFormField(
+                obscureText: false,
+                maxLength: 25,
+                textInputAction: TextInputAction.next,
+                keyboardType: TextInputType.emailAddress,
+                label: const Text("Email"),
+                controller: emailController,
+              ),
+              CustomTextFormField(
+                obscureText: false,
                 maxLength: 10,
                 textInputAction: TextInputAction.next,
-                keyboardType: TextInputType.text,
-                label: const Text("Password"),
-                controller: passwordController,
-                suffixIcon: IconButton(
-                  onPressed: () {},
-                  icon: const Icon(
-                    Icons.visibility_off,
-                  ),
-                )),
-            CustomTextFormField(
-              obscureText: true,
-              maxLength: 10,
-              textInputAction: TextInputAction.done,
-              keyboardType: TextInputType.text,
-              label: const Text("Confirm Password"),
-              controller: confirmPasswordController,
-            ),
-            Padding(
-              padding: const EdgeInsets.only(right: 16 ,bottom: 16),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  OutlinedButton(
-                    onPressed: (){
-                      if(formKey.currentState!.validate()){
-                        Navigator.pushAndRemoveUntil(
-                            context,
-                            MaterialPageRoute(builder: (context) => const HomeView() ),
-                                (route) => false);
-                      }
-                    },
-                    style: OutlinedButton.styleFrom(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(5),
-                      ),
-
-                    ),
-                    child: const Text(
-                      "Sign Up",
-                      style: TextStyle(
-                        fontSize: 26,
-                        color: Colors.blue,
-                      ),
-                    ),
-                  ),
-                ],
+                keyboardType: TextInputType.name,
+                label: const Text("Username"),
+                controller: userNameController,
               ),
-            ),
-          ],
+              CustomTextFormField(
+                  obscureText: true,
+                  maxLength: 10,
+                  textInputAction: TextInputAction.next,
+                  keyboardType: TextInputType.text,
+                  label: const Text("Password"),
+                  controller: passwordController,
+                  suffixIcon: IconButton(
+                    onPressed: () {},
+                    icon: const Icon(
+                      Icons.visibility_off,
+                    ),
+                  )),
+              CustomTextFormField(
+                obscureText: true,
+                maxLength: 10,
+                textInputAction: TextInputAction.done,
+                keyboardType: TextInputType.text,
+                label: const Text("Confirm Password"),
+                controller: confirmPasswordController,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(right: 16 ,bottom: 16),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    OutlinedButton(
+                      onPressed: (){
+                        if(formKey.currentState!.validate()){
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => const HomeView() ),
+                                  );
+                        }
+                      },
+                      style: OutlinedButton.styleFrom(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(5),
+                        ),
+
+                      ),
+                      child: const Text(
+                        "Sign Up",
+                        style: TextStyle(
+                          fontSize: 26,
+                          color: Colors.blue,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
