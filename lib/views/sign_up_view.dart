@@ -2,9 +2,14 @@ import 'package:ectd_task9/views/home_view.dart';
 import 'package:ectd_task9/widgets/custom_text_form_field.dart';
 import 'package:flutter/material.dart';
 
-class SignUpView extends StatelessWidget {
+class SignUpView extends StatefulWidget {
   SignUpView({super.key});
+  @override
+  State<SignUpView> createState() => _SignUpViewState();
+}
 
+class _SignUpViewState extends State<SignUpView> {
+  bool obscurePassword = true;
   var emailController = TextEditingController();
 
   var userNameController = TextEditingController();
@@ -14,6 +19,8 @@ class SignUpView extends StatelessWidget {
   var confirmPasswordController = TextEditingController();
 
   var formKey = GlobalKey<FormState>();
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -46,18 +53,26 @@ class SignUpView extends StatelessWidget {
                 controller: userNameController,
               ),
               CustomTextFormField(
-                  obscureText: true,
+                  obscureText: obscurePassword,
                   maxLength: 10,
                   textInputAction: TextInputAction.next,
                   keyboardType: TextInputType.text,
                   label: const Text("Password"),
                   controller: passwordController,
                   suffixIcon: IconButton(
-                    onPressed: () {},
-                    icon: const Icon(
-                      Icons.visibility_off,
+                    onPressed: () {
+                      obscurePassword = !obscurePassword;
+                      setState(() {
+
+                      });
+                    },
+                    icon:  Icon(
+                      obscurePassword
+                          ?  Icons.visibility_off
+                          :  Icons.visibility,
                     ),
-                  )),
+                  )
+              ),
               CustomTextFormField(
                 obscureText: true,
                 maxLength: 10,
@@ -65,6 +80,20 @@ class SignUpView extends StatelessWidget {
                 keyboardType: TextInputType.text,
                 label: const Text("Confirm Password"),
                 controller: confirmPasswordController,
+                  suffixIcon: IconButton(
+                    onPressed: () {
+                      obscurePassword = !obscurePassword;
+                      setState(() {
+
+                      });
+                    },
+                    icon:  Icon(
+                      obscurePassword
+                          ?  Icons.visibility_off
+                          :  Icons.visibility,
+
+                    ),
+                  )
               ),
               Padding(
                 padding: const EdgeInsets.only(right: 16 ,bottom: 16),
